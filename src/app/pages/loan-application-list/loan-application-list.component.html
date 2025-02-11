@@ -1,0 +1,40 @@
+<div class="parent">
+    <div class="card">
+        <h2 class="text-center mb-4">Bank Application Details</h2>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        @if (applicationListService.loggedUserData.role == "Customer") {
+                            <th>Full Name</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Employment Status</th>
+                        }
+                        <th>Date Applied</th>
+                        <th>Application Status</th>
+                        <th>Assigned To</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (application of applicationList; track $index) {
+                    <tr>
+                        @if (applicationListService.loggedUserData.role == "Customer") {
+                            <td>{{application.fullName}}</td>
+                            <td>{{application.customerPhone}}</td>
+                            <td>{{application.email}}</td>
+                            <td>{{application.employmentStatus}}</td>
+                        }
+                        <td>{{application.dateApplied}}</td>
+                        <td>{{application.applicationStatus}}</td>
+                        <td>{{application.assignedToBankEmployee}}</td>
+                        <td><button>Edit</button><button>Delete</button></td>
+                    </tr>
+                }
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

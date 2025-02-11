@@ -1,0 +1,80 @@
+<div class="parent">
+    
+    <form [formGroup]="loanApplicationForm">
+        <h2 class="mb-4">Application Form</h2>
+        <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" formControlName="fullName" class="form-control" id="fullName" name="fullName" required>
+        </div>
+        <div class="mb-3">
+            <label for="applicationStatus" class="form-label">Application Status</label>
+            <input type="text" formControlName="applicationStatus" class="form-control" id="applicationStatus" name="applicationStatus">
+        </div>
+        <div class="mb-3">
+            <label for="panCard" class="form-label">PAN Card</label>
+            <input type="text" formControlName="panCard" class="form-control" id="panCard" name="panCard" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateOfBirth" class="form-label">Date of Birth</label>
+            <input type="date" formControlName="dateOfBirth" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" formControlName="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" formControlName="phone" class="form-control" id="phone" name="phone" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea formControlName="address" class="form-control" id="address" name="address" rows="2"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="city" class="form-label">City</label>
+                <input type="text" formControlName="city" class="form-control" id="city" name="city">
+            </div>
+            <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <input type="text" formControlName="state" class="form-control" id="state" name="state">
+            </div>
+            <div class="col-md-4">
+                <label for="zipCode" class="form-label">Zip Code</label>
+                <input type="text" formControlName="zipCode" class="form-control" id="zipCode" name="zipCode">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="annualIncome" class="form-label">Annual Income</label>
+            <input type="number" formControlName="annualIncome" class="form-control" id="annualIncome" name="annualIncome">
+        </div>
+        <div class="mb-3">
+            <label for="employmentStatus" class="form-label">Employment Status</label>
+            <input type="text" formControlName="employmentStatus" class="form-control" id="employmentStatus" name="employmentStatus">
+        </div>
+        <div class="mb-3">
+            <label for="creditScore" class="form-label">Credit Score</label>
+            <input type="number" formControlName="creditScore" class="form-control" id="creditScore" name="creditScore">
+        </div>
+        <div class="mb-3">
+            <label for="assets" class="form-label">Assets</label>
+            <textarea formControlName="assets" class="form-control" id="assets" name="assets" rows="2"></textarea>
+        </div>
+        <h4>Loan Details</h4>
+        <div id="loanDetailsContainer" formArrayName="loans">
+            <button type="button" class="btn btn-secondary" (click)="addNewLoan()">Add More</button>
+            @for (loan of loanList.controls; track $index) {
+            <div class="loan-details mb-3 border p-3" [formGroupName]="$index">
+                <label for="bankName" class="form-label">Bank Name</label>
+                <input type="text" formControlName="bankName" class="form-control" id="bankName" name="bankName">
+                <label for="loanAmount" class="form-label">Loan Amount</label>
+                <input type="number" formControlName="loanAmount" class="form-control" id="loanAmount" name="loanAmount">
+                <label for="emi" class="form-label">EMI</label>
+                <input type="number" formControlName="emi" class="form-control" id="emi" name="emi">
+                <button type="button" class="btn btn-danger mt-2" (click)="removeLoan($index)">Remove</button>
+            </div>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="onSave()">Submit</button>
+    </form>
+</div>

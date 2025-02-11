@@ -1,2 +1,44 @@
-<h1>Welcome to {{ title }}!</h1>
-<app-my-component></app-my-component> 
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item" style="margin-top:-12px;">
+          <a class="nav-link active" routerLink="banker-list">Bankers</a>
+        </li>
+        <li class="nav-item" style="margin-top:-12px;">
+          <a class="nav-link" routerLink="customer-list">Customers</a>
+        </li>
+        <li class="nav-item" style="margin-top:-12px;">
+          <a class="nav-link" routerLink="loan-application-list">Applications</a>
+        </li>
+        <li class="nav-item" style="margin-top:-12px;">
+          <a class="nav-link" routerLink="new-loan-form">Loan</a>
+        </li>
+        <li class="nav-item" style="margin-top:-12px;">
+          <a class="nav-link" routerLink="sign-up">Sign Up</a>
+        </li>
+        @if(loggedUserData) {
+          <li class="nav-item" style="margin-top:-12px;">
+            <a class="nav-link" routerLink="login" (click)="logout()">Logout</a>
+          </li>
+        } @else {
+          <li class="nav-item" style="margin-top:-12px;">
+            <a class="nav-link" routerLink="login">Login</a>
+          </li>
+        }
+      </ul>
+      @if(loggedUserData) {
+      <span class="text-white">Hi {{loggedUserData.fullName}}</span>
+      }
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

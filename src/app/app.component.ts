@@ -1,14 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MyComponentComponent } from './my-component/my-component.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MyComponentComponent],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'my-angular-app';
+  title = 'Bank Loan Application';
+  loggedUserData: any;
+  constructor() {
+    const loggedData = sessionStorage.getItem('bankUser');
+    if (loggedData != null) {
+      this.loggedUserData = JSON.parse(loggedData);
+    }
+  }
+
+  logout() {
+    sessionStorage.removeItem('bankUser');
+  }
 }

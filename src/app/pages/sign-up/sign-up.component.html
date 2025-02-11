@@ -1,0 +1,26 @@
+
+<div class="parent">
+    <form style="border:1px solid #ccc">
+    <div class="container">
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+        
+      <label for="userName"><b>Username</b></label>
+      <input type="text" [(ngModel)] = "customerObj.userName" placeholder="Enter user name" name="userName" required>
+      
+      <label for="emailId"><b>Email</b></label>
+      <input type="text" [(ngModel)] = "customerObj.emailId" placeholder="Enter email" name="emailId" required>
+  
+      <label for="fullName"><b>Fullname</b></label>
+      <input type="text" [(ngModel)] = "customerObj.fullName" placeholder="Enter full name" name="fullName" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" [(ngModel)] = "customerObj.password" placeholder="Enter password" name="password" required>
+  
+      <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn" (click)="onRegister()">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
